@@ -6,7 +6,9 @@
 
 ### third - example
 
-[淘系 DDD 第三讲：Repository模式]: https://mp.weixin.qq.com/s/1bcymUcjCkOdvVygunShmw
+淘系 DDD 第三讲：Repository模式
+
+**https://mp.weixin.qq.com/s/1bcymUcjCkOdvVygunShmw **
 
 
 
