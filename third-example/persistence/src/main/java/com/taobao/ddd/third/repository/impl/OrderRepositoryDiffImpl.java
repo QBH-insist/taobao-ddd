@@ -1,9 +1,11 @@
 package com.taobao.ddd.third.repository.impl;
 
+import com.taobao.ddd.third.domain.entity.LineItem;
 import com.taobao.ddd.third.domain.entity.Order;
 import com.taobao.ddd.third.domain.repository.OrderRepository;
 import com.taobao.ddd.third.domain.type.OrderQuery;
 import com.taobao.ddd.third.domain.type.Page;
+import com.taobao.ddd.third.persistence.LineItemDO;
 import com.taobao.ddd.third.persistence.OrderDO;
 import com.taobao.ddd.third.persistence.converter.LineItemDataConverter;
 import com.taobao.ddd.third.persistence.converter.OrderDataConverter;
@@ -12,6 +14,7 @@ import com.taobao.ddd.third.persistence.dao.OrderDAO;
 import com.taobao.ddd.third.repository.diff.Diff;
 import com.taobao.ddd.third.repository.diff.EntityDiff;
 import com.taobao.ddd.third.repository.diff.ListDiff;
+import com.taobao.ddd.third.repository.diff.SingleDiff;
 import com.taobao.ddd.third.type.OrderId;
 import com.taobao.ddd.third.type.StoreId;
 
@@ -56,15 +59,14 @@ public class OrderRepositoryDiffImpl extends DbRepositorySupport<Order, OrderId>
     }
 
     Diff lineItemDiffs = diff.getDiff("lineItems");
-    if(lineItemDiffs instanceof ListDiff) {
+    if (lineItemDiffs instanceof ListDiff) {
       ListDiff diffList = (ListDiff) lineItemDiffs;
       for (Diff itemDiff : diffList) {
-        // LineItem line = (LineItem) itemDiff.getOldValue();
-        // LineItemDO lineDO = lineItemConverter.toData(line);
-        // lineItemDAO.delete(lineDO);
+        LineItem line = (LineItem) itemDiff.getOldValue();
+        LineItemDO lineDO = lineItemConverter.toData(line);
+        lineItemDAO.delete(lineDO);
       }
     }
-
   }
 
   @Override

@@ -3,6 +3,9 @@ package com.taobao.ddd.third.repository.diff;
 import java.util.*;
 
 public class ListDiff extends AbstractList<Diff> implements Diff {
+  private List<?> oldValue;
+  private  List<?> newValue;
+
   private List<Diff> diffs = new ArrayList<>();
 
   @Override
@@ -18,6 +21,24 @@ public class ListDiff extends AbstractList<Diff> implements Diff {
   @Override
   public int size() {
     return diffs.size();
+  }
+
+  @Override
+  public Object getOldValue() {
+    return null;
+  }
+
+  @Override
+  public Object getNewValue() {
+    return null;
+  }
+
+  public void setOldValue(List<?> oldValue) {
+    this.oldValue = oldValue;
+  }
+
+  public void setNewValue(List<?> newValue) {
+    this.newValue = newValue;
   }
 
   public void addDiffs(List<Diff> diffs) {

@@ -8,4 +8,6 @@ public interface LineItemDAO {
 
   int insert(LineItemDO lineItemDO);
 
+  int delete(LineItemDO lineDO);
+
 }

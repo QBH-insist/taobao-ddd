@@ -53,6 +53,8 @@ public class DiffUtils {
 
   private static Diff doListDiff(List<?> oldObj, List<?> newObj) {
     ListDiff diffs = new ListDiff();
+    diffs.setOldValue(oldObj);
+    diffs.setNewValue(newObj);
 
     if (oldObj.size() != newObj.size()) {
       diffs.addDiffs(
